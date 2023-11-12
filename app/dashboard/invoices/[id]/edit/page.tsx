@@ -1,13 +1,18 @@
 import Form from "@/app/ui/invoices/edit-form";
 import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
 import { fetchInvoiceById,fetchCustomers } from "@/app/lib/data";
+import { notFound } from 'next/navigation';
 const Page = async ({ params }: { params: { id: string } }) => {
     const id = params.id;
     const [invoice, customers] = await Promise.all([
         fetchInvoiceById(id),
         fetchCustomers(),
       ]);
-    console.log(invoice)  
+      
+    if (!invoice) {
+      notFound();
+    }
+   // console.log(invoice)  
   return (
     <main>
     <Breadcrumbs

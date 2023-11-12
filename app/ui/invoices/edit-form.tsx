@@ -10,6 +10,8 @@ import {
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateInvoice } from '@/app/lib/actions';
+
+// as this is the default export it can be imported with the alias Form in edit-form.jsx
 export default function EditInvoiceForm({
   invoice,
   customers,
